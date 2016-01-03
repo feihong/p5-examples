@@ -1,0 +1,24 @@
+<%!
+    title = 'Example'
+%>
+<%inherit file="base.html"/>
+
+<%block name="extrahead">
+<style>
+canvas {
+  border: 1px solid lightgray;
+}
+</style>
+</%block>
+
+<a href='${site}'>Back</a> |
+<a href='https://github.com/${user}${site}tree/master/site/${slug}'>Source</a> |
+<a class='show-grid' href='#'>Show grid</a>
+
+<h1>${self.attr.title}</h1>
+
+${next.body()}
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.20/p5.min.js'></script>
+<script src='${site}static/js/lib.js'></script>
+<script src='sketch.js'></script>
