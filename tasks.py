@@ -68,7 +68,10 @@ def publish():
 
 NEW_PAGE_HTML_TEMPLATE = u"""\
 <%!
-    title = ${title}
+
+title = ${title}
+description = ''
+
 %>
 <%inherit file='${template}' />
 """

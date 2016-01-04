@@ -1,5 +1,8 @@
 <%!
-    title = 'Example'
+
+title = 'Example'
+description = ''
+
 %>
 <%inherit file="base.html"/>
 
@@ -15,6 +18,10 @@ canvas {
 <a href='https://github.com/${user}${site}tree/master/site/${slug}'>Source</a>
 
 <h1>${self.attr.title}</h1>
+
+<%block filter="markdown">
+${self.attr.description}
+</%block>
 
 <div id='controls'>
   <span class='coords'>(?, ?)</span>
