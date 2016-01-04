@@ -2,6 +2,7 @@
 
 title = 'Example'
 description = ''
+grid = False
 
 %>
 <%inherit file="base.html"/>
@@ -23,18 +24,20 @@ canvas {
 ${self.attr.description}
 </%block>
 
+% if self.attr.grid:
 <div id='controls'>
   <span class='coords'>(?, ?)</span>
   <button>Hide grid</button>
 </div>
 
 <div id='container' style='position: relative;'>
-  <canvas id='grid' style='position: absolute; left: 0; top: 0; opacity: 0'></canvas>
+  <canvas id='grid' style='position: absolute; left: 0; top: 0'></canvas>
 </div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js'></script>
+<script src='${site}static/js/grid.js'></script>
+% endif
 
 ${next.body()}
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.20/p5.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js'></script>
-<script src='${site}static/js/lib.js'></script>
 <script src='sketch.js'></script>

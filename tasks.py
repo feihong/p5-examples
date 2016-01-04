@@ -71,6 +71,7 @@ NEW_PAGE_HTML_TEMPLATE = u"""\
 
 title = ${title}
 description = ''
+grid = True
 
 %>
 <%inherit file='${template}' />
