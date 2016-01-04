@@ -1,6 +1,6 @@
 # Feihong's p5.js Examples
 
-This is a collection of example programs demonstrating the usage of [p5.js](http://p5js.org).
+This is a collection of [p5.js](http://p5js.org) example programs that is published to http://feihong.github.io/p5-examples/.
 
 ## Installation
 
