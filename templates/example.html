@@ -12,13 +12,22 @@ canvas {
 </%block>
 
 <a href='${site}'>Back</a> |
-<a href='https://github.com/${user}${site}tree/master/site/${slug}'>Source</a> |
-<a class='show-grid' href='#'>Show grid</a>
+<a href='https://github.com/${user}${site}tree/master/site/${slug}'>Source</a>
 
 <h1>${self.attr.title}</h1>
+
+<div id='controls'>
+  <span class='coords'>(?, ?)</span>
+  <button>Hide grid</button>
+</div>
+
+<div id='container' style='position: relative;'>
+  <canvas id='grid' style='position: absolute; left: 0; top: 0; opacity: 0'></canvas>
+</div>
 
 ${next.body()}
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.20/p5.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js'></script>
 <script src='${site}static/js/lib.js'></script>
 <script src='sketch.js'></script>

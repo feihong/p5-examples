@@ -2,33 +2,52 @@
 
 (function() {
 
-  var a = document.querySelector('a.show-grid')
-  var canvas = null
-  var coordsDiv = document.createElement('div')
-  coordsDiv.textContent = '(?, ?)'
-  var yOffset = null
-  var xOffset = null
+  var gridCanvas = $('canvas#grid')
+  var coordsDiv = $('#controls .coords')
+  $('#controls button').on('click', function() {
+    gridCanvas.toggleClass('hidden')
+    var hidden = $(this).text() === 'Show grid'
+    $(this).text(hidden ? 'Hide grid' : 'Show grid')
+  })
 
-  a.onclick = (evt) => {
-    evt.preventDefault()
+  gridCanvas.on('mousemove', showCoordinates)
+  gridCanvas.on('mouseenter', () => gridCanvas.css('opacity', 1))
+  gridCanvas.on('mouseleave', () => {
+    gridCanvas.css('opacity', 0)
+    coordsDiv.text('(?, ?)')
+  })
 
-    canvas = document.querySelector('canvas')
+  checkForCanvas()
 
-    // Insert coordsDiv before canvas
-    canvas.parentNode.insertBefore(coordsDiv, canvas)
-
-    var rect = canvas.getBoundingClientRect()
-    xOffset = Math.round(rect.x)
-    yOffset = Math.round(rect.y)
-
-    canvas.onmousemove = showCoordinates
-    canvas.onmouseleave = () => {
-      coordsDiv.textContent = '(?, ?)'
+  function checkForCanvas(callback) {
+    if ($('#defaultCanvas0').length) {
+      initialize()
+    } else {
+      window.setTimeout(checkForCanvas, 50)
     }
+  }
+
+  function initialize() {
+    var canvas = $('#defaultCanvas0')
+
+    var w = canvas.width()
+    var h = canvas.height()
+
+    var container = $('#container')
+    container.width(w)
+    container.height(h)
+
+    gridCanvas.width(w)
+    gridCanvas.height(h)
+    gridCanvas[0].width = w
+    gridCanvas[0].height = h
+
+    container.append(canvas)
     drawGrid()
   }
 
   function drawGrid() {
+    var canvas = gridCanvas[0]
     var w = canvas.clientWidth
     var h = canvas.clientHeight
     var ctx = canvas.getContext('2d')
@@ -40,7 +59,6 @@
       ctx.moveTo(i, 0)
       ctx.lineTo(i, h)
       ctx.stroke()
-
       ctx.beginPath()
       ctx.moveTo(0, i)
       ctx.lineTo(w, i)
@@ -49,7 +67,7 @@
   }
 
   function showCoordinates(evt) {
-    coordsDiv.textContent = `(${evt.clientX - xOffset - 1}, ${evt.clientY - yOffset - 2})`
+    coordsDiv.text(`(${evt.offsetX}, ${evt.offsetY})`)
   }
 
 })()
