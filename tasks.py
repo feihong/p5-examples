@@ -12,7 +12,7 @@ IMPORTS = [
     'from filters import markdown, rst'
 ]
 
-lookup = TemplateLookup(directories=['templates'])
+lookup = TemplateLookup(directories=['templates'], imports=IMPORTS)
 
 app = bottle.Bottle()
 
