@@ -11,9 +11,9 @@
   })
 
   gridCanvas.on('mousemove', showCoordinates)
-  gridCanvas.on('mouseenter', () => gridCanvas.css('opacity', 1))
+  gridCanvas.on('mouseenter', () => gridCanvas.animate({opacity: 1}))
   gridCanvas.on('mouseleave', () => {
-    gridCanvas.css('opacity', 0)
+    gridCanvas.fadeTo(400, 0)
     coordsDiv.text('(?, ?)')
   })
 
