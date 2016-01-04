@@ -74,6 +74,8 @@ NEW_PAGE_HTML_TEMPLATE = u"""\
 """
 
 NEW_PAGE_JS_TEMPLATE = u"""\
+'use strict';
+
 function setup() {
   createCanvas(300, 300)
 }
