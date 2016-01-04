@@ -1,15 +1,17 @@
+'use strict';
+
 function setup() {
   createCanvas(300, 300)
   background('palegoldenrod')
 }
 
 function draw() {
+  rectMode(CENTER)
   stroke(0)
-  strokeWeight(1)
 
   fill('white')
   ellipse(75, 110, 40, 60)  // body
-  rect(50, 50, 50, 50)      // heady
+  rect(75, 75, 50, 50)      // heady
 
   fill('black')
 
