@@ -5,17 +5,14 @@
   var gridCanvas = $('canvas#grid')
   var coordsDiv = $('#controls .coords')
   $('#controls button').on('click', function() {
-    gridCanvas.toggleClass('hidden')
     var hidden = $(this).text() === 'Show grid'
     $(this).text(hidden ? 'Hide grid' : 'Show grid')
+    hidden ?
+      gridCanvas.fadeIn(400) : gridCanvas.fadeOut(400, 0)
   })
 
   gridCanvas.on('mousemove', showCoordinates)
-  gridCanvas.on('mouseenter', () => gridCanvas.animate({opacity: 1}))
-  gridCanvas.on('mouseleave', () => {
-    gridCanvas.fadeTo(400, 0)
-    coordsDiv.text('(?, ?)')
-  })
+  gridCanvas.on('mouseleave', () => coordsDiv.text('(?, ?)'))
 
   checkForCanvas()
 
